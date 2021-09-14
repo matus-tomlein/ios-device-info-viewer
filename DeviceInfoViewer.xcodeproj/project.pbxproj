@@ -8,18 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		6B08DEA126EA1ACA00D2C819 /* DeviceInfoViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B08DEA026EA1ACA00D2C819 /* DeviceInfoViewerApp.swift */; };
-		6B08DEA326EA1ACA00D2C819 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B08DEA226EA1ACA00D2C819 /* ContentView.swift */; };
+		6B08DEA326EA1ACA00D2C819 /* DeviceStatsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B08DEA226EA1ACA00D2C819 /* DeviceStatsListView.swift */; };
 		6B08DEA526EA1ACC00D2C819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B08DEA426EA1ACC00D2C819 /* Assets.xcassets */; };
 		6B08DEA826EA1ACC00D2C819 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B08DEA726EA1ACC00D2C819 /* Preview Assets.xcassets */; };
+		6B08DEB026EA1B3C00D2C819 /* Sysctl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B08DEAF26EA1B3C00D2C819 /* Sysctl.swift */; };
+		6B321A8B26F0756C00D2AF2F /* MachMemoryStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B321A8A26F0756C00D2AF2F /* MachMemoryStats.m */; };
+		6B60176226EA2AEA003E6FD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B60176126EA2AEA003E6FD6 /* AppDelegate.swift */; };
+		6BEDB06326EFA477005B3A44 /* DeviceStatsUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEDB06226EFA477005B3A44 /* DeviceStatsUpdater.swift */; };
+		6BEDB06526EFA5DC005B3A44 /* DeviceStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEDB06426EFA5DC005B3A44 /* DeviceStats.swift */; };
+		6BEDB06726EFB4A7005B3A44 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEDB06626EFB4A7005B3A44 /* AppState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6B08DE9D26EA1ACA00D2C819 /* DeviceInfoViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeviceInfoViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B08DEA026EA1ACA00D2C819 /* DeviceInfoViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoViewerApp.swift; sourceTree = "<group>"; };
-		6B08DEA226EA1ACA00D2C819 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6B08DEA226EA1ACA00D2C819 /* DeviceStatsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStatsListView.swift; sourceTree = "<group>"; };
 		6B08DEA426EA1ACC00D2C819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B08DEA726EA1ACC00D2C819 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6B08DEA926EA1ACC00D2C819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B08DEAF26EA1B3C00D2C819 /* Sysctl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sysctl.swift; sourceTree = "<group>"; };
+		6B321A8A26F0756C00D2AF2F /* MachMemoryStats.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MachMemoryStats.m; sourceTree = "<group>"; };
+		6B321A8C26F075F100D2AF2F /* MachMemoryStats.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MachMemoryStats.h; sourceTree = "<group>"; };
+		6B60176126EA2AEA003E6FD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6B60176326EA52CF003E6FD6 /* DeviceInfoViewer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DeviceInfoViewer-Bridging-Header.h"; sourceTree = "<group>"; };
+		6BEDB06226EFA477005B3A44 /* DeviceStatsUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStatsUpdater.swift; sourceTree = "<group>"; };
+		6BEDB06426EFA5DC005B3A44 /* DeviceStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStats.swift; sourceTree = "<group>"; };
+		6BEDB06626EFB4A7005B3A44 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,10 +67,18 @@
 			isa = PBXGroup;
 			children = (
 				6B08DEA026EA1ACA00D2C819 /* DeviceInfoViewerApp.swift */,
-				6B08DEA226EA1ACA00D2C819 /* ContentView.swift */,
+				6B08DEA226EA1ACA00D2C819 /* DeviceStatsListView.swift */,
 				6B08DEA426EA1ACC00D2C819 /* Assets.xcassets */,
 				6B08DEA926EA1ACC00D2C819 /* Info.plist */,
 				6B08DEA626EA1ACC00D2C819 /* Preview Content */,
+				6B08DEAF26EA1B3C00D2C819 /* Sysctl.swift */,
+				6B60176126EA2AEA003E6FD6 /* AppDelegate.swift */,
+				6B60176326EA52CF003E6FD6 /* DeviceInfoViewer-Bridging-Header.h */,
+				6BEDB06226EFA477005B3A44 /* DeviceStatsUpdater.swift */,
+				6BEDB06426EFA5DC005B3A44 /* DeviceStats.swift */,
+				6BEDB06626EFB4A7005B3A44 /* AppState.swift */,
+				6B321A8A26F0756C00D2AF2F /* MachMemoryStats.m */,
+				6B321A8C26F075F100D2AF2F /* MachMemoryStats.h */,
 			);
 			path = DeviceInfoViewer;
 			sourceTree = "<group>";
@@ -100,6 +122,7 @@
 				TargetAttributes = {
 					6B08DE9C26EA1ACA00D2C819 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -138,8 +161,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B08DEA326EA1ACA00D2C819 /* ContentView.swift in Sources */,
+				6BEDB06326EFA477005B3A44 /* DeviceStatsUpdater.swift in Sources */,
+				6BEDB06526EFA5DC005B3A44 /* DeviceStats.swift in Sources */,
+				6BEDB06726EFB4A7005B3A44 /* AppState.swift in Sources */,
+				6B60176226EA2AEA003E6FD6 /* AppDelegate.swift in Sources */,
+				6B08DEA326EA1ACA00D2C819 /* DeviceStatsListView.swift in Sources */,
+				6B321A8B26F0756C00D2AF2F /* MachMemoryStats.m in Sources */,
 				6B08DEA126EA1ACA00D2C819 /* DeviceInfoViewerApp.swift in Sources */,
+				6B08DEB026EA1B3C00D2C819 /* Sysctl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +232,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "DeviceInfoViewer/DeviceInfoViewer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -257,6 +287,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "DeviceInfoViewer/DeviceInfoViewer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -267,8 +298,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DeviceInfoViewer/Preview Content\"";
+				DEVELOPMENT_TEAM = V487J8L84E;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DeviceInfoViewer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -278,6 +311,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.tomlein.matus.DeviceInfoViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DeviceInfoViewer/DeviceInfoViewer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -288,8 +323,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DeviceInfoViewer/Preview Content\"";
+				DEVELOPMENT_TEAM = V487J8L84E;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DeviceInfoViewer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -299,6 +336,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.tomlein.matus.DeviceInfoViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DeviceInfoViewer/DeviceInfoViewer-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

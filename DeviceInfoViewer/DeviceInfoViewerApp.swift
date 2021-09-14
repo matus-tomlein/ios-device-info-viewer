@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct DeviceInfoViewerApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @State var appState: AppState = AppState()
+
+    init() {
+        appState.load()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DeviceStatsListView().environmentObject(appState)
         }
     }
 }
