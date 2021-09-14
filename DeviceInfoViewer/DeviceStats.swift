@@ -13,6 +13,7 @@ class DeviceStats: ObservableObject {
     @Published var memSize: UInt64?
     @Published var userMemory: UInt32?
     @Published var physicalMemory: UInt64?
+    @Published var physicalMemorySyctl: UInt32?
     @Published var osAvailableMemory: Int?
     @Published var machMemFree: natural_t?
     @Published var machMemTotal: natural_t?
@@ -26,6 +27,7 @@ class DeviceStats: ObservableObject {
     /// disk stats
     @Published var volumeAvailableCapacityForOpportunisticUsage: Int64?
     @Published var volumeAvailableCapacityForImportantUsage: Int64?
+    @Published var volumeTotalCapacity: Int?
     
     /// network stats
     @Published var networkStatus: String?

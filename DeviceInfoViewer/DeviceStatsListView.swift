@@ -18,6 +18,7 @@ struct DeviceStatsListView: View {
             Section(header: Text("Memory")) {
                 Text(String(format: "Sysctl HW_MEMSIZE: %u bytes", deviceStats.memSize ?? 0))
                 Text(String(format: "Sysctl HW_USERMEM: %u bytes", deviceStats.userMemory ?? 0))
+                Text(String(format: "Sysctl HW_PHYSMEM: %u bytes", deviceStats.physicalMemorySyctl ?? 0))
                 Text(String(format: "ProcessInfo physical memory: %u bytes", deviceStats.physicalMemory ?? 0))
                 Text(String(format: "OS available memory: %u bytes", deviceStats.osAvailableMemory ?? 0))
                 Text(String(format: "Mach free memory: %u bytes", deviceStats.machMemFree ?? 0))
@@ -32,8 +33,9 @@ struct DeviceStatsListView: View {
             }
 
             Section(header: Text("Disk")) {
-                Text(String(format: "Opportunistic usage capacity: %d bytes", deviceStats.volumeAvailableCapacityForOpportunisticUsage ?? 0))
-                Text(String(format: "Important usage capacity: %d bytes", deviceStats.volumeAvailableCapacityForImportantUsage ?? 0))
+                Text(String(format: "Opportunistic usage capacity: %ld bytes", deviceStats.volumeAvailableCapacityForOpportunisticUsage ?? 0))
+                Text(String(format: "Important usage capacity: %ld bytes", deviceStats.volumeAvailableCapacityForImportantUsage ?? 0))
+                Text(String(format: "Total capacity: %ld bytes", deviceStats.volumeTotalCapacity ?? 0))
             }
 
             Section(header: Text("Network")) {

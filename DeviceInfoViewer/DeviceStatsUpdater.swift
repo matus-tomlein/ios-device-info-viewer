@@ -20,6 +20,7 @@ class DeviceStatsUpdater {
             let memSize = getHWMemSize()
             let userMemory = getHWUserMem()
             let physicalMemory = ProcessInfo.processInfo.physicalMemory /// The amount of physical memory on the computer in bytes.
+            let sysCtlPhysicalMemory = getHWPhysMem()
             let osAvailableMemory = os_proc_available_memory() /// The amount of memory available to the current app. iOS 13+, not on MacOS
             let memoryStats = getMachMemoryStats()
             
@@ -29,6 +30,7 @@ class DeviceStatsUpdater {
             
             let volumeAvailableCapacityForOpportunisticUsage = getVolumeAvailableCapacityForOpportunisticUsage()
             let volumeAvailableCapacityForImportantUsage = getVolumeAvailableCapacityForImportantUsage()
+            let volumeTotalCapacity = getVolumeTotalCapacity()
             
             let networkStatus = getNetworkStatus()
 
@@ -40,6 +42,7 @@ class DeviceStatsUpdater {
                 deviceStats.memSize = memSize
                 deviceStats.userMemory = userMemory
                 deviceStats.physicalMemory = physicalMemory
+                deviceStats.physicalMemorySyctl = sysCtlPhysicalMemory
                 deviceStats.osAvailableMemory = osAvailableMemory
                 
                 deviceStats.machMemFree = memoryStats?.mem_free
@@ -52,6 +55,7 @@ class DeviceStatsUpdater {
                 
                 deviceStats.volumeAvailableCapacityForOpportunisticUsage = volumeAvailableCapacityForOpportunisticUsage
                 deviceStats.volumeAvailableCapacityForImportantUsage = volumeAvailableCapacityForImportantUsage
+                deviceStats.volumeTotalCapacity = volumeTotalCapacity
                 
                 deviceStats.networkStatus = networkStatus
                 deviceStats.runningTimeSeconds = timeIntervalSeconds
@@ -59,12 +63,16 @@ class DeviceStatsUpdater {
         }
     }
     
+    private static func getHWPhysMem() -> UInt32 {
+        return try! Sysctl.value(ofType: UInt32.self, forKeys: [CTL_HW, HW_PHYSMEM]) /// The bytes of physical memory.
+    }
+    
     private static func getHWMemSize() -> UInt64 {
-        return try! Sysctl.value(ofType: UInt64.self, forKeys: [CTL_HW, HW_MEMSIZE])
+        return try! Sysctl.value(ofType: UInt64.self, forKeys: [CTL_HW, HW_MEMSIZE]) /// physical ram size
     }
     
     private static func getHWUserMem() -> UInt32 {
-        return try! Sysctl.value(ofType: UInt32.self, forKeys: [CTL_HW, HW_USERMEM])
+        return try! Sysctl.value(ofType: UInt32.self, forKeys: [CTL_HW, HW_USERMEM]) /// The bytes of non-kernel memory.
     }
     
     private static func getVolumeAvailableCapacityForOpportunisticUsage() -> Int64? {
@@ -77,6 +85,12 @@ class DeviceStatsUpdater {
         return (
             try? URL(fileURLWithPath: NSHomeDirectory()).resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey])
         )?.volumeAvailableCapacityForImportantUsage
+    }
+    
+    private static func getVolumeTotalCapacity() -> Int? {
+        return (
+            try? URL(fileURLWithPath: NSHomeDirectory()).resourceValues(forKeys: [.volumeTotalCapacityKey])
+        )?.volumeTotalCapacity
     }
     
     private static func getBatterState() -> String {
