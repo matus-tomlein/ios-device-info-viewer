@@ -16,14 +16,14 @@ struct DeviceStatsListView: View {
     var body: some View {
         List {
             Section(header: Text("Memory")) {
-                Text(String(format: "Sysctl HW_MEMSIZE: %u bytes", deviceStats.memSize ?? 0))
-                Text(String(format: "Sysctl HW_USERMEM: %u bytes", deviceStats.userMemory ?? 0))
-                Text(String(format: "Sysctl HW_PHYSMEM: %u bytes", deviceStats.physicalMemorySyctl ?? 0))
-                Text(String(format: "ProcessInfo physical memory: %u bytes", deviceStats.physicalMemory ?? 0))
-                Text(String(format: "OS available memory: %u bytes", deviceStats.osAvailableMemory ?? 0))
-                Text(String(format: "Mach free memory: %u bytes", deviceStats.machMemFree ?? 0))
-                Text(String(format: "Mach used memory: %u bytes", deviceStats.machMemUsed ?? 0))
-                Text(String(format: "Mach total memory: %u bytes", deviceStats.machMemTotal ?? 0))
+                Text("Sysctl HW_MEMSIZE: \(deviceStats.memSizeString)")
+                Text("Sysctl HW_USERMEM: \(deviceStats.userMemoryString)")
+                Text("Sysctl HW_PHYSMEM: \(deviceStats.physicalMemorySyctlString)")
+                Text("ProcessInfo physical memory: \(deviceStats.physicalMemoryString)")
+                Text("OS available memory: \(deviceStats.osAvailableMemoryString)")
+                Text("Mach free memory: \(deviceStats.machMemFreeString)")
+                Text("Mach used memory: \(deviceStats.machMemUsedString)")
+                Text("Mach total memory: \(deviceStats.machMemTotalString)")
             }
 
             Section(header: Text("Battery")) {
@@ -33,9 +33,9 @@ struct DeviceStatsListView: View {
             }
 
             Section(header: Text("Disk")) {
-                Text(String(format: "Opportunistic usage capacity: %ld bytes", deviceStats.volumeAvailableCapacityForOpportunisticUsage ?? 0))
-                Text(String(format: "Important usage capacity: %ld bytes", deviceStats.volumeAvailableCapacityForImportantUsage ?? 0))
-                Text(String(format: "Total capacity: %ld bytes", deviceStats.volumeTotalCapacity ?? 0))
+                Text("Opportunistic usage capacity: \(deviceStats.volumeAvailableCapacityForOpportunisticUsageString)")
+                Text("Important usage capacity: \(deviceStats.volumeAvailableCapacityForImportantUsageString)")
+                Text("Total capacity: \(deviceStats.volumeTotalCapacityString)")
             }
 
             Section(header: Text("Network")) {
