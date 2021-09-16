@@ -18,6 +18,9 @@ class DeviceStats: ObservableObject {
     @Published var machMemFree: natural_t?
     @Published var machMemTotal: natural_t?
     @Published var machMemUsed: natural_t?
+    @Published var mstatsBytesFree: Int?
+    @Published var mstatsBytesUsed: Int?
+    @Published var mstatsBytesTotal: Int?
     
     var memSizeString: String {
         ByteCountFormatter().string(fromByteCount: Int64(memSize ?? 0))
@@ -43,17 +46,28 @@ class DeviceStats: ObservableObject {
     var machMemUsedString: String {
         ByteCountFormatter().string(fromByteCount: Int64(machMemUsed ?? 0))
     }
-    
+    var mstatsFreeString: String {
+        ByteCountFormatter().string(fromByteCount: Int64(mstatsBytesFree ?? 0))
+    }
+    var mstatsUsedString: String {
+        ByteCountFormatter().string(fromByteCount: Int64(mstatsBytesUsed ?? 0))
+    }
+    var mstatsTotalString: String {
+        ByteCountFormatter().string(fromByteCount: Int64(mstatsBytesTotal ?? 0))
+    }
+
     /// battery stats
     @Published var batteryLevel: Float?
     @Published var batteryState: String?
     @Published var lowPowerModeEnabled: Bool?
-    
+
     /// disk stats
     @Published var volumeAvailableCapacityForOpportunisticUsage: Int64?
     @Published var volumeAvailableCapacityForImportantUsage: Int64?
     @Published var volumeTotalCapacity: Int?
-    
+    @Published var statfsFree: Int?
+    @Published var statfsTotal: Int?
+
     var volumeAvailableCapacityForOpportunisticUsageString: String {
         ByteCountFormatter().string(fromByteCount: volumeAvailableCapacityForOpportunisticUsage ?? 0)
     }
@@ -63,10 +77,16 @@ class DeviceStats: ObservableObject {
     var volumeTotalCapacityString: String {
         ByteCountFormatter().string(fromByteCount: Int64(volumeTotalCapacity ?? 0))
     }
-    
+    var statfsFreeString: String {
+        ByteCountFormatter().string(fromByteCount: Int64(statfsFree ?? 0))
+    }
+    var statfsTotalString: String {
+        ByteCountFormatter().string(fromByteCount: Int64(statfsTotal ?? 0))
+    }
+
     /// network stats
     @Published var networkStatus: String?
-    
+
     /// other
     @Published var runningTimeSeconds: Double?
 }

@@ -13,7 +13,24 @@
 #import <mach/mach_host.h>
 #include <Foundation/Foundation.h>
 #import "MachMemoryStats.h"
+#include <sys/mount.h>
 
+
+long statfsFree(const char *path) {
+    struct statfs tStats;
+    if (statfs(path, &tStats) == 0) {
+        return tStats.f_bavail * tStats.f_bsize;
+    }
+    return -1;
+}
+
+long statfsTotal(const char *path) {
+    struct statfs tStats;
+    if (statfs(path, &tStats) == 0) {
+        return tStats.f_blocks * tStats.f_bsize;
+    }
+    return -1;
+}
 
 MachMemoryStats * getMachMemoryStats()
 {
@@ -37,9 +54,9 @@ MachMemoryStats * getMachMemoryStats()
                           vm_stat.wire_count) * pagesize;
     natural_t mem_free = vm_stat.free_count * pagesize;
     natural_t mem_total = mem_used + mem_free;
-    
+
     NSLog(@"used: %u free: %u total: %u", mem_used, mem_free, mem_total);
-    
+
     MachMemoryStats *stats = [[MachMemoryStats alloc] init];
     stats.mem_free = mem_free;
     stats.mem_total = mem_total;

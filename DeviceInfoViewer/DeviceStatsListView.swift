@@ -15,15 +15,27 @@ struct DeviceStatsListView: View {
 
     var body: some View {
         List {
-            Section(header: Text("Memory")) {
+            Section(header: Text("Memory sysctl")) {
                 Text("Sysctl HW_MEMSIZE: \(deviceStats.memSizeString)")
                 Text("Sysctl HW_USERMEM: \(deviceStats.userMemoryString)")
                 Text("Sysctl HW_PHYSMEM: \(deviceStats.physicalMemorySyctlString)")
+            }
+
+            Section(header: Text("Memory process")) {
                 Text("ProcessInfo physical memory: \(deviceStats.physicalMemoryString)")
                 Text("OS available memory: \(deviceStats.osAvailableMemoryString)")
+            }
+
+            Section(header: Text("Memory mach")) {
                 Text("Mach free memory: \(deviceStats.machMemFreeString)")
                 Text("Mach used memory: \(deviceStats.machMemUsedString)")
                 Text("Mach total memory: \(deviceStats.machMemTotalString)")
+            }
+
+            Section(header: Text("Memory mstats")) {
+                Text("Mstats free memory: \(deviceStats.mstatsFreeString)")
+                Text("Mstats used memory: \(deviceStats.mstatsUsedString)")
+                Text("Mstats total memory: \(deviceStats.mstatsTotalString)")
             }
 
             Section(header: Text("Battery")) {
@@ -36,6 +48,11 @@ struct DeviceStatsListView: View {
                 Text("Opportunistic usage capacity: \(deviceStats.volumeAvailableCapacityForOpportunisticUsageString)")
                 Text("Important usage capacity: \(deviceStats.volumeAvailableCapacityForImportantUsageString)")
                 Text("Total capacity: \(deviceStats.volumeTotalCapacityString)")
+            }
+            
+            Section(header: Text("Disk statfs")) {
+                Text("Statfs free: \(deviceStats.statfsFreeString)")
+                Text("Statfs total: \(deviceStats.statfsTotalString)")
             }
 
             Section(header: Text("Network")) {
