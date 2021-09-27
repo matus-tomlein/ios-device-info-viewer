@@ -12,6 +12,16 @@ class AppState: ObservableObject {
 
     @Published var deviceStats: DeviceStats = DeviceStats()
     @Published var updatedAt: Date?
+    @Published var updateFrequency = 1.0
+    @Published var updateSysctlMemory = true
+    @Published var updateMemoryProcess = true
+    @Published var updateMachMemory = true
+    @Published var updateMstatsMemory = true
+    @Published var updateBattery = true
+    @Published var updateDisk = true
+    @Published var updateStatfsDisk = true
+    @Published var updateNetwork = true
+    
     var updatedAtString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -22,9 +32,18 @@ class AppState: ObservableObject {
     private let updateFrequencySeconds: Double = 0.5
 
     func load() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-            DeviceStatsUpdater.update(deviceStats: self.deviceStats)
-            self.updatedAt = Date()
+        DeviceStatsUpdater.update(deviceStats: deviceStats,
+                                  updateSysctlMemory: updateSysctlMemory,
+                                  updateMemoryProcess: updateMemoryProcess,
+                                  updateMachMemory: updateMachMemory,
+                                  updateMstatsMemory: updateMstatsMemory,
+                                  updateBattery: updateBattery,
+                                  updateDisk: updateDisk,
+                                  updateStatfsDisk: updateStatfsDisk,
+                                  updateNetwork: updateNetwork)
+        self.updatedAt = Date()
+        Timer.scheduledTimer(withTimeInterval: updateFrequency, repeats: false, block: { _ in
+            self.load()
         })
     }
 }

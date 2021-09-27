@@ -62,12 +62,16 @@ class DeviceStats: ObservableObject {
     @Published var lowPowerModeEnabled: Bool?
 
     /// disk stats
+    @Published var volumeAvailableCapacity: Int?
     @Published var volumeAvailableCapacityForOpportunisticUsage: Int64?
     @Published var volumeAvailableCapacityForImportantUsage: Int64?
     @Published var volumeTotalCapacity: Int?
     @Published var statfsFree: Int?
     @Published var statfsTotal: Int?
 
+    var volumeAvailableCapacityString: String {
+        ByteCountFormatter().string(fromByteCount: Int64(volumeAvailableCapacity ?? 0))
+    }
     var volumeAvailableCapacityForOpportunisticUsageString: String {
         ByteCountFormatter().string(fromByteCount: volumeAvailableCapacityForOpportunisticUsage ?? 0)
     }
